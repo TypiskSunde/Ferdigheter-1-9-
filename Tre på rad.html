@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Tre på rad</title>
+    <style>
+        div {
+            color: green;
+            background-color: lightgray;
+            width: 100px;
+            height: 100px;
+            float: left;
+            font-size: 200%;
+            font-family: helvetica;
+            text-align: center;
+            vertical-align: middle;
+        }
+        #app{
+            display: grid;
+            grid-template-rows: 100px 100px 100px;
+            grid-template-columns: 100px 100px 100px;
+            gap: 10px;
+        }
+
+        div.first {
+            clear: left;
+
+    
+        }
+    </style>
+</head>
+<body>
+
+    <div id="app"></div>
+    
+    <script>
+        //Model
+        let board = ["", "", "", "", "", "", "", "", ""];
+        
+
+        //View
+      
+        showBoard();
+        function showBoard() {
+            document.getElementById("app").innerHTML = `
+                <div onclick="setX(this)" class="first">1</div>
+                <div onclick="setX(this)">2</div>
+                <div onclick="setX(this)">3</div>
+
+                <div onclick="setX(this)" class="first">4</div>
+                <div onclick="setX(this)">5</div>
+                <div onclick="setX(this)">6</div>
+
+                <div onclick="setX(this)" class="first">7</div>
+                <div onclick="setX(this)">8</div>
+                <div onclick="setX(this)">9</div>
+            `
+        };
+        
+
+
+
+        //Controller
+        function setX(divElement) {
+            if (divElement.innerHTML !== 'x' && divElement.innerHTML !== 'o') {
+                divElement.innerHTML = 'x';
+
+                var divs1 = document.getElementsByTagName('div');
+                var divs2 = new Array();
+                for (var i = 0; i < divs1.length; i++) {
+                    if (divs1[i].innerHTML !== 'x' && divs1[i].innerHTML !== 'o') {
+                        divs2.push(divs1[i]);
+                        //console.log(divs2);
+                    }
+                }
+
+                if (divs2.length > 0) {
+                    console.log(divs2.length+' før');
+                    var index = getRndm(divs2);
+                    console.log(index+' etter');
+                    if(index != 0){
+                        divs2[index].innerHTML = 'o';
+                        divs2[index].style.color = 'blue';
+                    }
+                    
+                }
+            }
+        }
+
+        function getRndm(divs){
+            console.log(divs.length+' divs etter');
+            let rndm = Math.floor(Math.random() * divs.length);
+            console.log(rndm+' 1st');
+            if(rndm != 0 && divs.length > 0){
+                rndm = rndm;
+                console.log(rndm+' 2nd');
+            }
+
+            else{
+                console.log(rndm+' else');
+                rndm = getRndm(divs);
+            }
+            return rndm
+
+        }
+        
+
+
+
+
+    </script>
+
+</body>
+</html>

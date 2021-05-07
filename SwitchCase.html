@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label> Velg en frukt
+        <select id="frukt" onchange="sjekkPris()">
+            <option value="eple"> eple </option>
+            <option value="banan"> banan </option>
+            <option value="jordbær"> jordbær </option>
+            <option value="kiwi"> kiwi </option>
+            <option value="appelsin"> appelsin </option>
+            <option value="mango"> mango </option>
+        </select>
+    </label>
+    <p id="pris"></p>
+    
+
+    <script>
+        function sjekkPris() {
+            var frukt = document.getElementById("frukt").value;
+            switch(frukt) {
+                case "eple":
+                    var amount = "8kr"
+                    document.getElementById("pris").innerHTML = "Prisen på " + frukt + " er " + amount; 
+                    break;
+                case "jordbær":
+                    var amount = "30kr"
+                    document.getElementById("pris").innerHTML = "Prisen på " + frukt + " er " + amount; 
+                    break;
+                case "kiwi":
+                    var amount = "9kr"
+                    document.getElementById("pris").innerHTML = "Prisen på " + frukt + " er " + amount; 
+                    break;
+                 case "appelsin":
+                    var amount = "15kr"
+                    document.getElementById("pris").innerHTML = "Prisen på " + frukt + " er " + amount; 
+                    break; 
+                case "mango":
+                    var amount = "23kr"
+                    document.getElementById("pris").innerHTML = "Prisen på " + frukt + " er " + amount;
+                    break; 
+                 default:
+                     document.getElementById("price").innerHTML = "Beklager for dette, " + frukt + " denne varen har vi ikke på lager.";        
+            }
+            
+        }
+        
+
+       
+
+
+    </script>
+    
+</body>
+</html>

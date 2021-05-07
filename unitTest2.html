@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.15.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.15.0.js"></script>
+  <link rel="stylesheet" href="Oblig 2.html">
+  <script src="oblig2.js"></script>
+
+  <script>
+       let numbers = [];
+        let chosenBar = ""; // Variabel for hvilken stolpe som er valgt
+        let inputValue; // Variabel for hva som er skrevet i input-feltet
+        
+
+   
+  
+        function show(){}
+      QUnit.test('Valgt stolpe nr 3', function(assert) {
+        klikkStolpe(3);
+        
+        assert.equal(chosenBar,3);
+
+      });
+   
+      QUnit.test('Valgt stolpe nr 4 to ganger', function(assert) {
+        klikkStolpe(4);
+        klikkStolpe(4);
+        
+        assert.equal(chosenBar,"");
+
+      });
+
+       QUnit.test('slettestolpe', function(assert) {
+          numbers = [5, 2, 4, 6];
+          chosenBar = 4;  //Sjekker at stolpe 6 blir slettet. 
+         slettStolpe();
+        
+        
+         assert.deepEqual(numbers,[5, 2, 4]);
+
+       });
+
+        QUnit.test('Endre valgt stolpe', function(assert) {
+             inputValue = 7;
+
+            numbers = [5, 2, 4, 6];
+            chosenBar = 3;
+            endreStolpe();
+            
+
+
+        
+            assert.deepEqual(numbers,[5, 2, 7, 6]);
+
+       });
+
+       QUnit.test('Legge til stolpe', function(assert) {
+        numbers = [5, 2, 4, 6];
+        inputValue = 3;
+        leggTilStolpe();
+        
+        
+        assert.deepEqual(numbers,[5, 2, 4, 6, 3]);
+
+      });
+
+   
+      
+  </script>
+
+
+</body>
